@@ -1,13 +1,7 @@
 import React from 'react';
 import './Button.css';
 
-function Button({
-	label = 'I am a button',
-	color = 'primary',
-	variant = 'contained',
-	className,
-	...props
-}) {
+function Button({ label = 'I am a button', ...props }) {
 	return (
 		<button className="" {...props}>
 			{label}
