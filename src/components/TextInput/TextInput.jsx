@@ -6,7 +6,7 @@ function TextInput({ helperText, ...props }) {
 			</span>
 			{helperText && (
 				<div>
-					<span>{helperText.text}</span>
+					<span>{helperText}</span>
 				</div>
 			)}
 		</span>

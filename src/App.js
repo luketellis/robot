@@ -5,6 +5,7 @@ import Table from './components/Table/Table';
 import TextInput from './components/TextInput/TextInput';
 import Bike from './domain/Classes/Bike';
 import Coordinate from './domain/Classes/Coordinate';
+import BikeMovementBar from './components/BikeMovementBar/BikeMovementBar';
 
 function App() {
 	const startingPoint = new Coordinate(1, 2);
@@ -19,10 +20,9 @@ function App() {
 			<header className="App-header">
 				<h1>Robot</h1>
 				<Table tableHeadings={['Bike ID', 'Active']} tableData={[1, 'yes']} />
-				<TextInput helperText="Place" />
+				<TextInput helperText="" placeholder="Enter Starting Instructions" />
 				<Button label="Create New Bike" />
-				<Button label="Turn Active Bike Left" />
-				<Button label="Turn Active Bike Right" />
+				<BikeMovementBar />
 				<Grid />
 			</header>
 		</div>
