@@ -1,0 +1,7 @@
+.gridcell {
+	min-width: 10vw;
+	min-height: 10vw;
+	border-style: solid;
+	border-color: red;
+	display: inline-block;
+}
