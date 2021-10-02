@@ -10,7 +10,7 @@ class Bike {
 	}
 
 	get getCoordinate() {
-		return this._coordinate;
+		return this.coordinate;
 	}
 
 	get getDirection() {
@@ -26,7 +26,7 @@ class Bike {
 	}
 
 	static increaseNumberOfBikes() {
-		this.numberOfBikes = ++this.numberOfBikes;
+		this.numberOfBikes += 1;
 	}
 
 	set setCoordinate(newCoordinate) {
