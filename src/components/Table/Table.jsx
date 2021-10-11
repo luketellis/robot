@@ -11,7 +11,7 @@ function Table(props) {
 
 	const tableData = props.tableData;
 	const dataRowElements = tableData.map((tableDataItem, index) => (
-		<tr>
+		<tr key={index}>
 			<TableData
 				key={`${tableDataItem.id}a`}
 				data={tableDataItem.id}
@@ -29,7 +29,7 @@ function Table(props) {
 			></TableData>
 			<TableData
 				key={`${tableDataItem.id}d`}
-				data={tableDataItem.active}
+				data={JSON.stringify(tableDataItem.active)}
 				headerRowType={false}
 			></TableData>
 		</tr>
