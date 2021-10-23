@@ -10,4 +10,5 @@ export const ERROR_MESSAGES = {
 		'DIRECTIONS can only be "NORTH", "SOUTH", "EAST" or "WEST"',
 	OUTSIDE_OF_GRID:
 		'That instruction would result in the robot being outside of the grid',
+	INCORRECT_ARGUMENT: 'The argument passed in appears to be incorrect',
 };

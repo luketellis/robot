@@ -12,8 +12,11 @@ const InstructionEnum = Object.freeze({
 
 //PLACE 1,2,NORTH
 const isValidInstruction = (instruction) => {
+	if (!instruction || typeof instruction !== 'string') {
+		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
+	}
 	const instructionArray = instruction.split(' ');
-	if (instructionArray.length !== 2) {
+	if (instructionArray.length > 2) {
 		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
 	}
 
@@ -21,7 +24,19 @@ const isValidInstruction = (instruction) => {
 		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
 	}
 
-	isValidPlaceCommand(instructionArray[1]);
+	if (instructionArray.length === 1 && instructionArray[1] === 'PLACE') {
+		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
+	}
+
+	if (instructionArray.length === 1) {
+		return true;
+	}
+
+	if (isValidPlaceCommand(instructionArray[1])) {
+		return true;
+	} else {
+		return false;
+	}
 };
 
 const isValidPlaceCommand = (place) => {
