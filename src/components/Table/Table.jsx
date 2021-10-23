@@ -2,14 +2,11 @@ import React from 'react';
 import TableData from '../TableData/TableData';
 import './Table.css';
 
-function Table(props) {
-	console.log(`DATA ITEMS ${JSON.stringify(props.tableData)}`);
-	const tableHeadings = props.tableHeadings;
+function Table({ tableData = [], tableHeadings = [] }) {
 	const headerRowElements = tableHeadings.map((tableHeading, index) => (
 		<TableData key={index} data={tableHeading} headerRowType={true}></TableData>
 	));
 
-	const tableData = props.tableData;
 	const dataRowElements = tableData.map((tableDataItem, index) => (
 		<tr key={index}>
 			<TableData

@@ -1,3 +1,5 @@
+import React from 'react';
+
 function TextInput({ helperText, ...props }) {
 	return (
 		<span>

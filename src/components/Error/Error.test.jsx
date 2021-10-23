@@ -1,5 +1,7 @@
 import Error from './Error';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 describe('Component test: Error', () => {
 	it('Should render component', () => {
