@@ -58,10 +58,14 @@ function App() {
 					placeholder="Enter Starting Instructions"
 					onChange={handleSearchTerm}
 				/>
-				<Button label="Create New Robot" onClick={addRobot} />
+				<Button
+					label="Create New Robot"
+					onClick={addRobot}
+					disabled={!instruction}
+				/>
 				<Error text={errorMsg} />
 				<RobotMovementBar activeRobot={activeRobot} setErrorMsg={setErrorMsg} />
-				<Grid />
+				<Grid robotArray={robotArray} />
 			</header>
 		</div>
 	);
