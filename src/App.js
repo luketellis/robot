@@ -6,7 +6,10 @@ import Grid from './components/Grid/Grid';
 import Table from './components/Table/Table';
 import TextInput from './components/TextInput/TextInput';
 import RobotMovementBar from './components/RobotMovementBar/RobotMovementBar';
-//import { RobotMovementBar } from './domain/classes/Direction';
+import {
+	InstructionEnum,
+	isValidInstruction,
+} from './domain/classes/Instruction';
 
 function App() {
 	const [robotArray, setRobotArray] = useState([]);
@@ -17,6 +20,14 @@ function App() {
 	const [activeRobot, setActiveRobot] = useState(0);
 
 	const addRobot = () => {
+		setErrorMsg('');
+		try {
+			isValidInstruction(instruction);
+		} catch (e) {
+			setErrorMsg(e.message);
+			return;
+		}
+
 		setRobotArray((prevState) => [
 			...prevState,
 			{
@@ -30,7 +41,9 @@ function App() {
 		!activeRobot && setActiveRobot(robotArray.length + 1);
 	};
 
-	const validateInstruction = () => {};
+	const handleSearchTerm = (e) => {
+		setInstruction(e.target.value.trim());
+	};
 
 	return (
 		<div className="App">
@@ -40,7 +53,11 @@ function App() {
 					tableHeadings={['Robot ID', 'Coordinate', 'Direction', 'Active']}
 					tableData={robotArray}
 				/>
-				<TextInput helperText="" placeholder="Enter Starting Instructions" />
+				<TextInput
+					helperText=""
+					placeholder="Enter Starting Instructions"
+					onChange={handleSearchTerm}
+				/>
 				<Button label="Create New Robot" onClick={addRobot} />
 				<Error text={errorMsg} />
 				<RobotMovementBar activeRobot={activeRobot} setErrorMsg={setErrorMsg} />

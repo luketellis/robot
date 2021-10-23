@@ -24,7 +24,10 @@ const isValidInstruction = (instruction) => {
 		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
 	}
 
-	if (instructionArray.length === 1 && instructionArray[1] === 'PLACE') {
+	if (
+		instructionArray.length === 1 &&
+		instructionArray[0].toUpperCase() === 'PLACE'
+	) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
@@ -32,7 +35,7 @@ const isValidInstruction = (instruction) => {
 		return true;
 	}
 
-	if (isValidPlaceCommand(instructionArray[1])) {
+	if (isValidPlaceCommand(instructionArray[1].toUpperCase())) {
 		return true;
 	} else {
 		return false;
@@ -52,11 +55,11 @@ const isValidPlaceCommand = (place) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (placeArray[0] > ROW_LENGTH - 1 || placeArray[1] > ROW_LENGTH - 1) {
+	if (placeArray[0] > ROW_LENGTH - 1 || placeArray[1] > COLUMN_LENGTH - 1) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (!(placeArray[2] in DirectionEnum)) {
+	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 };
