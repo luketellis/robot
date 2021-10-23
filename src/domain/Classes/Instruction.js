@@ -45,11 +45,11 @@ const isValidPlaceCommand = (place) => {
 	}
 
 	if (placeArray[0] < 0 || placeArray[1] < 0) {
-		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
+		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
 	}
 
 	if (placeArray[0] > ROW_LENGTH - 1 || placeArray[1] > COLUMN_LENGTH - 1) {
-		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
+		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
 	}
 
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
@@ -66,7 +66,7 @@ const createRobotFromString = (instruction, id, active) => {
 
 	return new Robot(
 		id,
-		new Coordinate(placeArray[0], placeArray[1]),
+		new Coordinate(parseInt(placeArray[0]), parseInt(placeArray[1])),
 		placeArray[2],
 		active
 	);
