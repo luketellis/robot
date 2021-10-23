@@ -4,17 +4,34 @@ import GridCell from '../GridCell/GridCell';
 import { COLUMN_LENGTH } from '../../domain/config/constants';
 import Robot from '../../domain/classes/Robot';
 import Coordinate from '../../domain/classes/Coordinate';
+import isEqual from 'lodash.isequal';
 
-export default function Row({ robotArray, rowNumber }) {
+export default function Row({ robotArray = [], rowNumber }) {
 	var cellsArray = [];
+
+	const doesGridCellAlreadyHaveRobot = (row, column) => {
+		let robotExists = false;
+		robotArray.forEach((robot) => {
+			const currentCoordinate = new Coordinate(row, column);
+			if (isEqual(robot.coordinate, currentCoordinate)) {
+				robotExists = true;
+			}
+		});
+		return robotExists;
+	};
+
 	for (var columnNumber = 0; columnNumber < COLUMN_LENGTH; columnNumber++) {
+		console.log(
+			rowNumber,
+			columnNumber,
+			doesGridCellAlreadyHaveRobot(rowNumber, columnNumber)
+		);
 		cellsArray.push(
 			<GridCell
 				key={columnNumber}
 				content={`${rowNumber}, ${columnNumber}`}
 				robot={
-					rowNumber === 2 &&
-					columnNumber === 4 &&
+					doesGridCellAlreadyHaveRobot(rowNumber, columnNumber) &&
 					new Robot(1, new Coordinate(rowNumber, columnNumber), 'NORTH', true)
 				}
 			/>
