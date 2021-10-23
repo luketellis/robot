@@ -3,7 +3,7 @@ export const COLUMN_LENGTH = 5;
 
 export const ERROR_MESSAGES = {
 	INVALID_PLACE_COMMAND:
-		'PLACE commands should be in the following formatv "PLACE 1,2,NORTH"',
+		'PLACE commands should be in the following format "PLACE 1,2,NORTH"',
 	INVALID_INSTRUCTION:
 		'"PLACE", "MOVE", "LEFT", "RIGHT", "REPORT" are the only valid commands',
 	INVALID_DIRECTION:

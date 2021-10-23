@@ -9,6 +9,7 @@ import RobotMovementBar from './components/RobotMovementBar/RobotMovementBar';
 import {
 	InstructionEnum,
 	isValidInstruction,
+	createRobotFromString,
 } from './domain/classes/Instruction';
 
 function App() {
@@ -23,20 +24,16 @@ function App() {
 		setErrorMsg('');
 		try {
 			isValidInstruction(instruction);
+			let potentialBike = createRobotFromString(
+				instruction,
+				robotArray.length + 1,
+				!activeRobot
+			);
+			setRobotArray((prevState) => [...prevState, potentialBike]);
 		} catch (e) {
 			setErrorMsg(e.message);
 			return;
 		}
-
-		setRobotArray((prevState) => [
-			...prevState,
-			{
-				id: robotArray.length + 1,
-				coordinate: coordinate,
-				direction: direction,
-				active: !activeRobot,
-			},
-		]);
 
 		!activeRobot && setActiveRobot(robotArray.length + 1);
 	};

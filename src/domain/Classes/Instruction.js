@@ -1,6 +1,7 @@
 import { DirectionEnum } from './Direction';
 import { COLUMN_LENGTH, ROW_LENGTH, ERROR_MESSAGES } from '../config/constants';
-import Grid from './Grid';
+import Robot from './Robot';
+import Coordinate from './Coordinate';
 
 const InstructionEnum = Object.freeze({
 	PLACE: 1,
@@ -20,22 +21,14 @@ const isValidInstruction = (instruction) => {
 		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
 	}
 
-	if (!(instructionArray[0] in InstructionEnum)) {
-		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
-	}
-
 	if (
-		instructionArray.length === 1 &&
-		instructionArray[0].toUpperCase() === 'PLACE'
+		instructionArray.length !== 2 ||
+		instructionArray[0].toUpperCase() !== 'PLACE'
 	) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (instructionArray.length === 1) {
-		return true;
-	}
-
-	if (isValidPlaceCommand(instructionArray[1].toUpperCase())) {
+	if (isValidPlaceCommand(instructionArray[1])) {
 		return true;
 	} else {
 		return false;
@@ -44,7 +37,7 @@ const isValidInstruction = (instruction) => {
 
 const isValidPlaceCommand = (place) => {
 	const placeArray = place.split(',');
-	if (placeArray.length !== 2) {
+	if (placeArray.length !== 3) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 	if (placeArray[0].isNan || placeArray[1].isNan) {
@@ -62,6 +55,21 @@ const isValidPlaceCommand = (place) => {
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
+	return true;
 };
 
-export { InstructionEnum, isValidInstruction };
+const createRobotFromString = (instruction, id, active) => {
+	const instructionArray = instruction.split(' ');
+	instruction.split(' ');
+
+	const placeArray = instructionArray[1].split(',');
+
+	return new Robot(
+		id,
+		new Coordinate(placeArray[0], placeArray[1]),
+		placeArray[2],
+		active
+	);
+};
+
+export { InstructionEnum, isValidInstruction, createRobotFromString };

@@ -13,9 +13,9 @@ export default function Row({ robotArray, rowNumber }) {
 				key={columnNumber}
 				content={`${rowNumber}, ${columnNumber}`}
 				robot={
-					rowNumber === 1 &&
+					rowNumber === 2 &&
 					columnNumber === 4 &&
-					new Robot('NORTH', new Coordinate(2, 4))
+					new Robot(1, new Coordinate(rowNumber, columnNumber), 'NORTH', true)
 				}
 			/>
 		);
