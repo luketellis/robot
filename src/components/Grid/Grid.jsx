@@ -5,7 +5,7 @@ import { COLUMN_LENGTH } from '../../domain/config/constants';
 
 export default function Grid({ robotArray }) {
 	var rowsArray = [];
-	for (var i = 0; i < COLUMN_LENGTH; i++) {
+	for (var i = COLUMN_LENGTH - 1; i > -1; i--) {
 		rowsArray.push(<Row key={i} rowNumber={i} robotArray={robotArray} />);
 	}
 
