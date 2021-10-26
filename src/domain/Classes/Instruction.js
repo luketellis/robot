@@ -1,7 +1,8 @@
 import { DirectionEnum } from './Direction';
-import { COLUMN_LENGTH, ROW_LENGTH, ERROR_MESSAGES } from '../config/constants';
-import Robot from './Robot';
+import { ERROR_MESSAGES } from '../config/constants';
+import { Robot } from './Robot';
 import Coordinate from './Coordinate';
+import { validateValidCoordinate } from './Grid';
 
 const InstructionEnum = Object.freeze({
 	PLACE: 1,
@@ -44,13 +45,7 @@ const isValidPlaceCommand = (place) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (placeArray[0] < 0 || placeArray[1] < 0) {
-		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
-	}
-
-	if (placeArray[0] > ROW_LENGTH - 1 || placeArray[1] > COLUMN_LENGTH - 1) {
-		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
-	}
+	validateValidCoordinate(new Coordinate(placeArray[0], placeArray[1]));
 
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
