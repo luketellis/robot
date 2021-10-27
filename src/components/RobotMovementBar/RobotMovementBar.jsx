@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import { moveRobotForward } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
 
-function RobotMovementBar({ activeRobot, setErrorMsg }) {
+function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
 	const validateActiveRobotExists = () => {
 		if (!activeRobot) {
 			setErrorMsg('No active robot is set');
@@ -19,16 +19,19 @@ function RobotMovementBar({ activeRobot, setErrorMsg }) {
 		if (validateActiveRobotExists()) {
 			moveRobotForward(activeRobot);
 		}
+		updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
 	};
 
 	const turnRobotLeft = () => {
 		validateActiveRobotExists();
 		turnLeft(activeRobot);
+		updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 	};
 
 	const turnRobotRight = () => {
 		validateActiveRobotExists();
 		turnRight(activeRobot);
+		updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 	};
 
 	return (

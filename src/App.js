@@ -38,6 +38,30 @@ function App() {
 		//robotArray[robotArray.length - 1]
 	};
 
+	const updateActiveRobot = (id, property, value) => {
+		setErrorMsg('');
+		try {
+			let oldRobotArray = [...robotArray];
+
+			var matchingRobotArray = oldRobotArray.filter((robot) => {
+				return robot.id === id;
+			});
+
+			var nonMatchingRobotArray = oldRobotArray.filter((robot) => {
+				return robot.id !== id;
+			});
+
+			var matchingRobot = { ...matchingRobotArray[0] };
+			matchingRobot[property] = value;
+
+			setRobotArray([...nonMatchingRobotArray, matchingRobot]);
+			setActiveRobot(matchingRobot);
+		} catch (e) {
+			setErrorMsg(e.message);
+			return;
+		}
+	};
+
 	const handleSearchTerm = (e) => {
 		setInstruction(e.target.value.trim());
 	};
@@ -61,7 +85,11 @@ function App() {
 					disabled={!instruction}
 				/>
 				<Error text={errorMsg} />
-				<RobotMovementBar activeRobot={activeRobot} setErrorMsg={setErrorMsg} />
+				<RobotMovementBar
+					activeRobot={activeRobot}
+					setErrorMsg={setErrorMsg}
+					updateActiveRobot={updateActiveRobot}
+				/>
 				<Grid robotArray={robotArray} />
 			</header>
 		</div>
