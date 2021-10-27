@@ -11,7 +11,7 @@ export default function Row({ robotArray = [], rowNumber }) {
 	const doesGridCellAlreadyHaveRobot = (row, column) => {
 		let robotExists = false;
 		robotArray.forEach((robot) => {
-			const currentCoordinate = new Coordinate(row, column);{
+			const currentCoordinate = new Coordinate(row, column);
 			if (robot.coordinate.x === row && robot.coordinate.y === column) {
 				robotExists = true;
 			}

@@ -5,3 +5,15 @@
 	border-color: red;
 	display: inline-block;
 }
+
+.east {
+	transform: rotateZ(90deg);
+}
+
+.south {
+	transform: rotateZ(180deg);
+}
+
+.west {
+	transform: rotateZ(-90deg);
+}

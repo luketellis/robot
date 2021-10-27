@@ -6,7 +6,7 @@ export default function GridCell({ content, robot }) {
 	return (
 		<span className="gridcell">
 			{content}
-			<span>{robot && <FaRobot />}</span>
+			<span>{robot && <FaRobot className="" />}</span>
 		</span>
 	);
 }
