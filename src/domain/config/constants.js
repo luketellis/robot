@@ -1,5 +1,5 @@
-export const ROW_LENGTH = 5;
-export const COLUMN_LENGTH = 5;
+export const NUM_ROWS = 5;
+export const NUM_COLUMNS = 5;
 
 export const ERROR_MESSAGES = {
 	INVALID_PLACE_COMMAND:

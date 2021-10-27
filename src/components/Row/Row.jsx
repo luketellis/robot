@@ -1,7 +1,7 @@
 import React from 'react';
 import './Row.css';
 import GridCell from '../GridCell/GridCell';
-import { COLUMN_LENGTH } from '../../domain/config/constants';
+import { NUM_COLUMNS } from '../../domain/config/constants';
 
 export default function Row({ robotArray = [], rowNumber }) {
 	var cellsArray = [];
@@ -16,12 +16,12 @@ export default function Row({ robotArray = [], rowNumber }) {
 		return robotFound;
 	};
 
-	for (var columnNumber = 0; columnNumber < COLUMN_LENGTH; columnNumber++) {
+	for (var columnNumber = 0; columnNumber < NUM_COLUMNS; columnNumber++) {
 		cellsArray.push(
 			<GridCell
-				key={columnNumber}
-				content={`${rowNumber}, ${columnNumber}`}
-				robot={doesGridCellAlreadyHaveRobot(rowNumber, columnNumber)}
+				key={`${columnNumber}, ${rowNumber}`}
+				content={`${columnNumber}, ${rowNumber}`}
+				robot={doesGridCellAlreadyHaveRobot(columnNumber, rowNumber)}
 			/>
 		);
 	}

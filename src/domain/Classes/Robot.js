@@ -21,16 +21,16 @@ const moveRobotForward = (robot) => {
 
 	switch (robot.direction) {
 		case DirectionEnum.NORTH:
-			potentialPosition.x++;
-			break;
-		case DirectionEnum.EAST:
 			potentialPosition.y++;
 			break;
+		case DirectionEnum.EAST:
+			potentialPosition.x++;
+			break;
 		case DirectionEnum.SOUTH:
-			potentialPosition.x--;
+			potentialPosition.y--;
 			break;
 		case DirectionEnum.WEST:
-			potentialPosition.y--;
+			potentialPosition.x--;
 			break;
 		default:
 			throw new Error(`Can't move robot forward`);

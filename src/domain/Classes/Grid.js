@@ -1,8 +1,8 @@
-import { COLUMN_LENGTH, ROW_LENGTH } from '../config/constants';
+import { NUM_ROWS, NUM_COLUMNS } from '../config/constants';
 
 function Grid() {
-	this.rows = ROW_LENGTH;
-	this.columns = COLUMN_LENGTH;
+	this.rows = NUM_ROWS;
+	this.columns = NUM_COLUMNS;
 }
 
 const validateValidCoordinate = (coordinate) => {
@@ -10,7 +10,7 @@ const validateValidCoordinate = (coordinate) => {
 		return false;
 	}
 
-	if (coordinate.x > ROW_LENGTH - 1 || coordinate.y > COLUMN_LENGTH - 1) {
+	if (coordinate.x > NUM_COLUMNS - 1 || coordinate.y > NUM_ROWS - 1) {
 		return false;
 	}
 	return true;
