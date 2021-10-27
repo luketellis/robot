@@ -7,35 +7,35 @@ import Table from './components/Table/Table';
 import TextInput from './components/TextInput/TextInput';
 import RobotMovementBar from './components/RobotMovementBar/RobotMovementBar';
 import {
-	InstructionEnum,
 	isValidInstruction,
 	createRobotFromString,
 } from './domain/classes/Instruction';
 
 function App() {
 	const [robotArray, setRobotArray] = useState([]);
-	const [direction, setDirection] = useState('NORTH');
-	const [coordinate, setCoordinate] = useState({ x: 1, y: 4 });
 	const [instruction, setInstruction] = useState('');
 	const [errorMsg, setErrorMsg] = useState('');
-	const [activeRobot, setActiveRobot] = useState(0);
+	const [activeRobot, setActiveRobot] = useState('');
 
 	const addRobot = () => {
 		setErrorMsg('');
+		let potentialRobot;
 		try {
 			isValidInstruction(instruction);
-			let potentialBike = createRobotFromString(
+			potentialRobot = createRobotFromString(
 				instruction,
 				robotArray.length + 1,
 				!activeRobot
 			);
-			setRobotArray((prevState) => [...prevState, potentialBike]);
+
+			setRobotArray((prevState) => [...prevState, potentialRobot]);
 		} catch (e) {
 			setErrorMsg(e.message);
 			return;
 		}
 
-		!activeRobot && setActiveRobot(robotArray.length + 1);
+		!activeRobot && setActiveRobot(potentialRobot);
+		//robotArray[robotArray.length - 1]
 	};
 
 	const handleSearchTerm = (e) => {

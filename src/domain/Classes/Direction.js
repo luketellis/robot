@@ -1,4 +1,9 @@
-const DirectionEnum = Object.freeze({ NORTH: 1, EAST: 2, SOUTH: 3, WEST: 4 });
+const DirectionEnum = Object.freeze({
+	NORTH: 'NORTH',
+	EAST: 'EAST',
+	SOUTH: 'SOUTH',
+	WEST: 'WEST',
+});
 
 const turnLeft = (currentDirection) => {
 	if (!currentDirection) {

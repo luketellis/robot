@@ -1,4 +1,4 @@
-import { COLUMN_LENGTH, ERROR_MESSAGES, ROW_LENGTH } from '../config/constants';
+import { COLUMN_LENGTH, ROW_LENGTH } from '../config/constants';
 
 function Grid() {
 	this.rows = ROW_LENGTH;
@@ -7,12 +7,13 @@ function Grid() {
 
 const validateValidCoordinate = (coordinate) => {
 	if (coordinate.x < 0 || coordinate.y < 0) {
-		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
+		return false;
 	}
 
 	if (coordinate.x > ROW_LENGTH - 1 || coordinate.y > COLUMN_LENGTH - 1) {
-		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
+		return false;
 	}
+	return true;
 };
 
 export { Grid, validateValidCoordinate };

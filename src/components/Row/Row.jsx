@@ -2,9 +2,8 @@ import React from 'react';
 import './Row.css';
 import GridCell from '../GridCell/GridCell';
 import { COLUMN_LENGTH } from '../../domain/config/constants';
-import Robot from '../../domain/classes/Robot';
+import { Robot } from '../../domain/classes/Robot';
 import Coordinate from '../../domain/classes/Coordinate';
-import isEqual from 'lodash.isequal';
 
 export default function Row({ robotArray = [], rowNumber }) {
 	var cellsArray = [];
@@ -12,8 +11,8 @@ export default function Row({ robotArray = [], rowNumber }) {
 	const doesGridCellAlreadyHaveRobot = (row, column) => {
 		let robotExists = false;
 		robotArray.forEach((robot) => {
-			const currentCoordinate = new Coordinate(row, column);
-			if (isEqual(robot.coordinate, currentCoordinate)) {
+			const currentCoordinate = new Coordinate(row, column);{
+			if (robot.coordinate.x === row && robot.coordinate.y === column) {
 				robotExists = true;
 			}
 		});
@@ -21,11 +20,11 @@ export default function Row({ robotArray = [], rowNumber }) {
 	};
 
 	for (var columnNumber = 0; columnNumber < COLUMN_LENGTH; columnNumber++) {
-		console.log(
-			rowNumber,
-			columnNumber,
-			doesGridCellAlreadyHaveRobot(rowNumber, columnNumber)
-		);
+		// console.log(
+		// 	rowNumber,
+		// 	columnNumber,
+		// 	doesGridCellAlreadyHaveRobot(rowNumber, columnNumber)
+		// );
 		cellsArray.push(
 			<GridCell
 				key={columnNumber}
