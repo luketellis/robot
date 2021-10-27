@@ -45,7 +45,9 @@ const isValidPlaceCommand = (place) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	validateValidCoordinate(new Coordinate(placeArray[0], placeArray[1]));
+	if (!validateValidCoordinate(new Coordinate(placeArray[0], placeArray[1]))) {
+		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
+	}
 
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
