@@ -2,6 +2,7 @@ import React from 'react';
 import './RobotMovementBar.css';
 import Button from '../Button/Button';
 import { moveRobotForward } from '../../domain/classes/Robot';
+import { turnLeft, turnRight } from '../../domain/classes/Direction';
 
 function RobotMovementBar({ activeRobot, setErrorMsg }) {
 	const validateActiveRobotExists = () => {
@@ -14,7 +15,7 @@ function RobotMovementBar({ activeRobot, setErrorMsg }) {
 		return true;
 	};
 
-	const moveRobot = (activeRobot) => {
+	const moveRobot = () => {
 		if (validateActiveRobotExists()) {
 			moveRobotForward(activeRobot);
 		}
@@ -22,19 +23,18 @@ function RobotMovementBar({ activeRobot, setErrorMsg }) {
 
 	const turnRobotLeft = () => {
 		validateActiveRobotExists();
+		turnLeft(activeRobot);
 	};
 
 	const turnRobotRight = () => {
 		validateActiveRobotExists();
+		turnRight(activeRobot);
 	};
 
 	return (
 		<div className="robotMovementBar">
 			<h2>Active Robot Commands</h2>
-			<Button
-				label="Move Robot Forward"
-				onClick={() => moveRobot(activeRobot)}
-			/>
+			<Button label="Move Robot Forward" onClick={moveRobot} />
 			<Button label="Turn Robot Left" onClick={turnRobotLeft} />
 			<Button label="Turn Robot Right" onClick={turnRobotRight} />
 		</div>

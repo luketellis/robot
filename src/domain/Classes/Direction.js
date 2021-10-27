@@ -5,41 +5,51 @@ const DirectionEnum = Object.freeze({
 	WEST: 'WEST',
 });
 
-const turnLeft = (currentDirection) => {
-	if (!currentDirection) {
-		throw new Error('Current direction is not defined');
+const turnLeft = (robot) => {
+	if (!robot) {
+		throw new Error('Current robot is not defined');
 	}
 
-	switch (currentDirection) {
+	switch (robot.direction) {
 		case DirectionEnum.NORTH:
-			return DirectionEnum.WEST;
+			robot.direction = DirectionEnum.WEST;
+			break;
 		case DirectionEnum.EAST:
-			return DirectionEnum.NORTH;
+			robot.direction = DirectionEnum.NORTH;
+			break;
 		case DirectionEnum.SOUTH:
-			return DirectionEnum.EAST;
+			robot.direction = DirectionEnum.EAST;
+			break;
+
 		case DirectionEnum.WEST:
-			return DirectionEnum.SOUTH;
+			robot.direction = DirectionEnum.SOUTH;
+			break;
+
 		default:
-			return currentDirection;
+			throw new Error('Active robot direction is not defined');
 	}
 };
 
-const turnRight = (currentDirection) => {
-	if (!currentDirection) {
-		throw new Error('Current direction is not defined');
+const turnRight = (robot) => {
+	if (!robot) {
+		throw new Error('Current robot is not defined');
 	}
 
-	switch (currentDirection) {
+	switch (robot.direction) {
 		case DirectionEnum.NORTH:
-			return DirectionEnum.EAST;
+			robot.direction = DirectionEnum.EAST;
+			break;
 		case DirectionEnum.EAST:
-			return DirectionEnum.SOUTH;
+			robot.direction = DirectionEnum.SOUTH;
+			break;
 		case DirectionEnum.SOUTH:
-			return DirectionEnum.WEST;
+			robot.direction = DirectionEnum.WEST;
+			break;
 		case DirectionEnum.WEST:
-			return DirectionEnum.NORTH;
+			robot.direction = DirectionEnum.NORTH;
+			break;
 		default:
-			return currentDirection;
+			throw new Error('Current direction is not defined');
 	}
 };
 
