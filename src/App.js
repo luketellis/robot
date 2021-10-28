@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from './components/Button/Button';
 import Error from './components/Error/Error';
 import Grid from './components/Grid/Grid';
@@ -35,7 +35,6 @@ function App() {
 		}
 
 		!activeRobot && setActiveRobot(potentialRobot);
-		//robotArray[robotArray.length - 1]
 	};
 
 	const updateActiveRobot = (id, property, value) => {

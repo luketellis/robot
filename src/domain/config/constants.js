@@ -9,9 +9,11 @@ const ERROR_MESSAGES = {
 	INVALID_DIRECTION:
 		'DIRECTIONS can only be "NORTH", "SOUTH", "EAST" or "WEST"',
 	OUTSIDE_OF_GRID:
-		'That instruction would result in the robot being outside of the grid',
+		'Instruction would result in the robot being outside of the grid',
 	GRID_CELL_OCCUPIED: 'The proposed grid cell is already occupied',
 	INCORRECT_ARGUMENT: 'The argument passed in appears to be incorrect',
+	NO_ACTIVE_ROBOT: 'There is no active robot',
+	INVALID_DIRECTION: 'Robot has an invalid direction',
 };
 
 export { ERROR_MESSAGES, NUM_COLUMNS, NUM_ROWS };

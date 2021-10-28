@@ -3,35 +3,44 @@ import './RobotMovementBar.css';
 import Button from '../Button/Button';
 import { moveRobotForward } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
+import { ERROR_MESSAGES } from '../../domain/config/constants';
 
 function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
 	const validateActiveRobotExists = () => {
 		if (!activeRobot) {
-			setErrorMsg('No active robot is set');
-			return false;
+			throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
 		}
-
-		setErrorMsg('');
 		return true;
 	};
 
 	const moveRobot = () => {
-		if (validateActiveRobotExists()) {
+		try {
+			validateActiveRobotExists();
 			moveRobotForward(activeRobot);
+			updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
+		} catch (e) {
+			setErrorMsg(e.message);
 		}
-		updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
 	};
 
 	const turnRobotLeft = () => {
-		validateActiveRobotExists();
-		turnLeft(activeRobot);
-		updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
+		try {
+			validateActiveRobotExists();
+			turnLeft(activeRobot);
+			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
+		} catch (e) {
+			setErrorMsg(e.message);
+		}
 	};
 
 	const turnRobotRight = () => {
-		validateActiveRobotExists();
-		turnRight(activeRobot);
-		updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
+		try {
+			validateActiveRobotExists();
+			turnRight(activeRobot);
+			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
+		} catch (e) {
+			setErrorMsg(e.message);
+		}
 	};
 
 	return (

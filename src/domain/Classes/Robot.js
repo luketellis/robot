@@ -11,10 +11,10 @@ function Robot(id, coordinate, direction, active) {
 
 const moveRobotForward = (robot) => {
 	if (!robot) {
-		throw new Error('Robot is not defined');
+		throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
 	}
 	if (!robot.direction) {
-		throw new Error('Current direction is not defined');
+		throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
 	}
 
 	let potentialPosition = { ...robot.coordinate };
@@ -33,7 +33,7 @@ const moveRobotForward = (robot) => {
 			potentialPosition.x--;
 			break;
 		default:
-			throw new Error(`Can't move robot forward`);
+			throw new Error(`Can't move robot due to invalid direction`);
 	}
 
 	if (validateValidCoordinate(potentialPosition)) {
