@@ -10,22 +10,22 @@ function Table({ tableData = [], tableHeadings = [] }) {
 	const dataRowElements = tableData.map((tableDataItem, index) => (
 		<tr key={index}>
 			<TableData
-				key={`${tableDataItem.id}a`}
+				key={`${tableDataItem.id}-id`}
 				data={tableDataItem.id}
 				headerRowType={false}
 			></TableData>
 			<TableData
-				key={`${tableDataItem.id}b`}
+				key={`${tableDataItem.id}-coordinate`}
 				data={JSON.stringify(tableDataItem.coordinate)}
 				headerRowType={false}
 			></TableData>
 			<TableData
-				key={`${tableDataItem.id}c`}
+				key={`${tableDataItem.id}-direction`}
 				data={tableDataItem.direction}
 				headerRowType={false}
 			></TableData>
 			<TableData
-				key={`${tableDataItem.id}d`}
+				key={`${tableDataItem.id}-active`}
 				data={JSON.stringify(tableDataItem.active)}
 				headerRowType={false}
 			></TableData>

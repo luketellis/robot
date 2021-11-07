@@ -50,10 +50,23 @@ function App() {
 				return robot.id !== id;
 			});
 
+			if (property === 'active') {
+				nonMatchingRobotArray.forEach((robot) => {
+					robot.active = false;
+				});
+			}
+
 			var matchingRobot = { ...matchingRobotArray[0] };
 			matchingRobot[property] = value;
 
-			setRobotArray([...nonMatchingRobotArray, matchingRobot]);
+			const robotArrayWithUpdatedValues = [
+				...nonMatchingRobotArray,
+				matchingRobot,
+			];
+
+			robotArrayWithUpdatedValues.sort((a, b) => a.id - b.id);
+
+			setRobotArray(robotArrayWithUpdatedValues);
 			setActiveRobot(matchingRobot);
 		} catch (e) {
 			setErrorMsg(e.message);
@@ -70,7 +83,7 @@ function App() {
 			<header className="App-header">
 				<h1>Robot</h1>
 				<Table
-					tableHeadings={['Robot ID', 'Coordinate', 'Direction', 'Active']}
+					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
 					tableData={robotArray}
 				/>
 				<TextInput
@@ -89,7 +102,7 @@ function App() {
 					setErrorMsg={setErrorMsg}
 					updateActiveRobot={updateActiveRobot}
 				/>
-				<Grid robotArray={robotArray} />
+				<Grid robotArray={robotArray} setActive={updateActiveRobot} />
 			</header>
 		</div>
 	);

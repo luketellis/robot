@@ -13,7 +13,6 @@ const ERROR_MESSAGES = {
 	GRID_CELL_OCCUPIED: 'The proposed grid cell is already occupied',
 	INCORRECT_ARGUMENT: 'The argument passed in appears to be incorrect',
 	NO_ACTIVE_ROBOT: 'There is no active robot',
-	INVALID_DIRECTION: 'Robot has an invalid direction',
 };
 
 export { ERROR_MESSAGES, NUM_COLUMNS, NUM_ROWS };

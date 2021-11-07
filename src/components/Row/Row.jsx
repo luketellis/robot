@@ -3,7 +3,7 @@ import './Row.css';
 import GridCell from '../GridCell/GridCell';
 import { NUM_COLUMNS } from '../../domain/config/constants';
 
-export default function Row({ robotArray = [], rowNumber }) {
+export default function Row({ robotArray = [], rowNumber, setActive }) {
 	var cellsArray = [];
 
 	const doesGridCellAlreadyHaveRobot = (row, column) => {
@@ -22,6 +22,7 @@ export default function Row({ robotArray = [], rowNumber }) {
 				key={`${columnNumber}, ${rowNumber}`}
 				content={`${columnNumber}, ${rowNumber}`}
 				robot={doesGridCellAlreadyHaveRobot(columnNumber, rowNumber)}
+				setActive={setActive}
 			/>
 		);
 	}
