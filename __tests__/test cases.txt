@@ -21,8 +21,12 @@ Turn left
  -Multiple robots, only active robots change
 
 PLACE 
- Can place one robot, automatically set as active
- Can place multiple robots, only first one is active
+- Can place one robot, automatically set as active
+- Can place multiple robots, only first one is active
+- Can place robot North facing
+- Can place robot East facing
+- Can place robot South facing
+- Can place robot West facing
 
 Active
  Can set other robot as active, old robot ceases to be active 
