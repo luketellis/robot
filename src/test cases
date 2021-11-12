@@ -1,0 +1,47 @@
+Positive test case scenarios
+Move forward
+ -North facing, increases y coordinate
+ -East facing, increases x coordinate
+ -South facing, decreases y coordinate
+ -West facing, decreases x coordinate
+ -Multiple robots, only active robots change
+
+Turn left
+ -North facing, changes to West
+ -East facing, changes to North
+ -South facing, changes to East
+ -West facing, changes to South
+ -Multiple robots, only active robots change
+
+ Turn Right
+ -North facing, changes to East
+ -East facing, changes to South
+ -South facing, changes to West
+ -West facing, changes to North
+ -Multiple robots, only active robots change
+
+PLACE 
+ Can place one robot, automatically set as active
+ Can place multiple robots, only first one is active
+
+Active
+ Can set other robot as active, old robot ceases to be active 
+ New active robot only responds to subsequent commands
+
+Negative test case scenarios
+No active robot 
+ -turn left
+ -turn right
+ -move forward
+
+PLACE
+ -Wrong Format
+ -Negative Numbers
+ -Positive numbers exceed Grid limit
+ -Wrong direction
+
+FORWARD
+ -negative x coordinate
+ -positive x coordinate exceeds Grid limmit
+ -negative y coordinate 
+ -positive x coordinate  exceeds Grid limit
