@@ -5,7 +5,7 @@ import { moveRobotForward } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
 import { ERROR_MESSAGES } from '../../domain/config/constants';
 
-function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
+function RobotMovementBar({ activeRobot, displayToast, updateActiveRobot }) {
 	const validateActiveRobotExists = () => {
 		if (!activeRobot) {
 			throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
@@ -19,7 +19,7 @@ function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
 			moveRobotForward(activeRobot);
 			updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
 		} catch (e) {
-			setErrorMsg(e.message);
+			displayToast(e.message);
 		}
 	};
 
@@ -29,7 +29,7 @@ function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
 			turnLeft(activeRobot);
 			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 		} catch (e) {
-			setErrorMsg(e.message);
+			displayToast(e.message);
 		}
 	};
 
@@ -39,7 +39,7 @@ function RobotMovementBar({ activeRobot, setErrorMsg, updateActiveRobot }) {
 			turnRight(activeRobot);
 			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 		} catch (e) {
-			setErrorMsg(e.message);
+			displayToast(e.message);
 		}
 	};
 

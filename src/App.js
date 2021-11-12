@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import Button from './components/Button/Button';
-import Error from './components/Error/Error';
 import Grid from './components/Grid/Grid';
 import Table from './components/Table/Table';
 import TextInput from './components/TextInput/TextInput';
@@ -10,15 +9,14 @@ import {
 	isValidInstruction,
 	createRobotFromString,
 } from './domain/classes/Instruction';
+import { toast, Toaster } from 'react-hot-toast';
 
 function App() {
 	const [robotArray, setRobotArray] = useState([]);
 	const [instruction, setInstruction] = useState('');
-	const [errorMsg, setErrorMsg] = useState('');
 	const [activeRobot, setActiveRobot] = useState('');
 
 	const addRobot = () => {
-		setErrorMsg('');
 		let potentialRobot;
 		try {
 			isValidInstruction(instruction);
@@ -30,7 +28,7 @@ function App() {
 
 			setRobotArray((prevState) => [...prevState, potentialRobot]);
 		} catch (e) {
-			setErrorMsg(e.message);
+			displayToast(e.message);
 			return;
 		}
 
@@ -38,7 +36,6 @@ function App() {
 	};
 
 	const updateActiveRobot = (id, property, value) => {
-		setErrorMsg('');
 		try {
 			let oldRobotArray = [...robotArray];
 
@@ -69,13 +66,19 @@ function App() {
 			setRobotArray(robotArrayWithUpdatedValues);
 			setActiveRobot(matchingRobot);
 		} catch (e) {
-			setErrorMsg(e.message);
+			displayToast(e.message);
 			return;
 		}
 	};
 
 	const handleSearchTerm = (e) => {
 		setInstruction(e.target.value.trim());
+	};
+
+	const displayToast = (e) => {
+		toast.error(e, {
+			icon: '⚠️',
+		});
 	};
 
 	return (
@@ -96,10 +99,17 @@ function App() {
 					onClick={addRobot}
 					disabled={!instruction}
 				/>
-				<Error text={errorMsg} />
+				<div>
+					<Toaster
+						toastOptions={{
+							duration: 2000,
+						}}
+					/>
+				</div>
+
 				<RobotMovementBar
 					activeRobot={activeRobot}
-					setErrorMsg={setErrorMsg}
+					displayToast={displayToast}
 					updateActiveRobot={updateActiveRobot}
 				/>
 				<Grid robotArray={robotArray} setActive={updateActiveRobot} />
