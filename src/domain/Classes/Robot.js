@@ -33,7 +33,7 @@ const moveRobotForward = (robot) => {
 			potentialPosition.x--;
 			break;
 		default:
-			throw new Error(`Can't move robot due to invalid direction`);
+			throw new Error(ERROR_MESSAGES.INVALID_DIRECTION);
 	}
 
 	if (validateValidCoordinate(potentialPosition)) {
