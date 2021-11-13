@@ -9,6 +9,7 @@ import {
 	isValidInstruction,
 	createRobotFromString,
 } from './domain/classes/Instruction';
+import { isMaxRobotsExceeded } from './domain/classes/Grid';
 import { toast, Toaster } from 'react-hot-toast';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 	const addRobot = () => {
 		let potentialRobot;
 		try {
+			isMaxRobotsExceeded(robotArray.length);
 			isValidInstruction(instruction);
 			potentialRobot = createRobotFromString(
 				instruction,

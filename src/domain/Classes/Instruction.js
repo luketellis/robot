@@ -17,7 +17,9 @@ const isValidInstruction = (instruction) => {
 	if (!instruction || typeof instruction !== 'string') {
 		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
 	}
+
 	const instructionArray = instruction.split(' ');
+
 	if (instructionArray.length > 2) {
 		throw new Error(ERROR_MESSAGES.INVALID_INSTRUCTION);
 	}
@@ -29,18 +31,20 @@ const isValidInstruction = (instruction) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (isValidPlaceCommand(instructionArray[1])) {
-		return true;
-	} else {
+	if (!isValidPlaceCommand(instructionArray[1])) {
 		return false;
 	}
+
+	return true;
 };
 
 const isValidPlaceCommand = (place) => {
 	const placeArray = place.split(',');
+
 	if (placeArray.length !== 3) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
+
 	if (placeArray[0].isNan || placeArray[1].isNan) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
@@ -52,6 +56,7 @@ const isValidPlaceCommand = (place) => {
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
+
 	return true;
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Row.css';
 import GridCell from '../GridCell/GridCell';
-import { NUM_COLUMNS } from '../../domain/config/constants';
+import { grid } from '../../domain/classes/Grid';
 
 export default function Row({ robotArray = [], rowNumber, setActive }) {
 	var cellsArray = [];
@@ -16,11 +16,11 @@ export default function Row({ robotArray = [], rowNumber, setActive }) {
 		return robotFound;
 	};
 
-	for (var columnNumber = 0; columnNumber < NUM_COLUMNS; columnNumber++) {
+	for (var columnNumber = 0; columnNumber < grid.num_columns; columnNumber++) {
 		cellsArray.push(
 			<GridCell
 				key={`${columnNumber}, ${rowNumber}`}
-				content={`${columnNumber}, ${rowNumber}`}
+				coordinateText={`${columnNumber}, ${rowNumber}`}
 				robot={doesGridCellAlreadyHaveRobot(columnNumber, rowNumber)}
 				setActive={setActive}
 			/>
