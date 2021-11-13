@@ -1,6 +1,7 @@
 import React from 'react';
 import TableData from '../TableData/TableData';
 import './Table.css';
+import { TiTickOutline } from 'react-icons/ti';
 
 function Table({ tableData = [], tableHeadings = [] }) {
 	const headerRowElements = tableHeadings.map((tableHeading, index) => (
@@ -26,7 +27,7 @@ function Table({ tableData = [], tableHeadings = [] }) {
 			></TableData>
 			<TableData
 				key={`${tableDataItem.id}-active`}
-				data={JSON.stringify(tableDataItem.active)}
+				data={tableDataItem.active && <TiTickOutline />}
 				headerRowType={false}
 			></TableData>
 		</tr>
