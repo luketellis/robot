@@ -87,7 +87,7 @@ function App() {
 		<div className="App">
 			<header className="App-header">
 				<h1>Robot</h1>
-				<TaAble
+				<Table
 					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
 					tableData={robotArray}
 				/>
