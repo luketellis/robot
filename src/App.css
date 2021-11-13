@@ -19,5 +19,27 @@ h1 {
 }
 
 .App-link {
-	color: #61dafb;
+	color: aqua;
 }
+
+.robot1 {
+	color: DeepPink;
+}
+
+.robot2 {
+	color: lawngreen;
+}
+
+.robot3 {
+	color: yellow;
+}
+
+.robot4 {
+	color: aqua;
+}
+
+.robot5 {
+	color: orange;
+}
+
+color: rgb(250, 85, 45);

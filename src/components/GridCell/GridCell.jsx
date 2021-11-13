@@ -1,5 +1,6 @@
 import React from 'react';
 import './GridCell.css';
+import '../../App.css';
 import { FaRobot } from 'react-icons/fa';
 
 export default function GridCell({ coordinateText, robot, setActive }) {
@@ -13,7 +14,9 @@ export default function GridCell({ coordinateText, robot, setActive }) {
 			{robot && (
 				<FaRobot
 					onClick={() => setActive(robot.id, 'active', true)}
-					className={turnDirectionIntoLowerCase(robot.direction)}
+					className={`${turnDirectionIntoLowerCase(robot.direction)} robot${
+						robot.id
+					}`}
 				/>
 			)}
 		</span>

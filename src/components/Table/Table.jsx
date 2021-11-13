@@ -8,7 +8,7 @@ function Table({ tableData = [], tableHeadings = [] }) {
 	));
 
 	const dataRowElements = tableData.map((tableDataItem, index) => (
-		<tr key={index}>
+		<tr key={index} className={`robot${tableDataItem.id}`}>
 			<TableData
 				key={`${tableDataItem.id}-id`}
 				data={tableDataItem.id}

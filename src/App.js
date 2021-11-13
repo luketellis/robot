@@ -77,8 +77,8 @@ function App() {
 		setInstruction(e.target.value.trim());
 	};
 
-	const displayToast = (e) => {
-		toast.error(e, {
+	const displayToast = (errorMsg) => {
+		toast.error(errorMsg, {
 			icon: '⚠️',
 		});
 	};
@@ -87,7 +87,7 @@ function App() {
 		<div className="App">
 			<header className="App-header">
 				<h1>Robot</h1>
-				<Table
+				<TaAble
 					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
 					tableData={robotArray}
 				/>
