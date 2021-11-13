@@ -11,6 +11,7 @@ import {
 } from './domain/classes/Instruction';
 import { isMaxRobotsExceeded } from './domain/classes/Grid';
 import { toast, Toaster } from 'react-hot-toast';
+import { INFO_MESSAGES } from './domain/config/constants';
 
 function App() {
 	const [robotArray, setRobotArray] = useState([]);
@@ -66,6 +67,10 @@ function App() {
 			robotArrayWithUpdatedValues.sort((a, b) => a.id - b.id);
 
 			setRobotArray(robotArrayWithUpdatedValues);
+
+			if (property === 'active' && activeRobot.id !== id) {
+				displayToast(INFO_MESSAGES.ACTIVE_ROBOT_CHANGED + id, '✔️');
+			}
 			setActiveRobot(matchingRobot);
 		} catch (e) {
 			displayToast(e.message);
@@ -77,9 +82,9 @@ function App() {
 		setInstruction(e.target.value.trim());
 	};
 
-	const displayToast = (errorMsg) => {
-		toast.error(errorMsg, {
-			icon: '⚠️',
+	const displayToast = (message, icon = '⚠️') => {
+		toast.error(message, {
+			icon: icon,
 		});
 	};
 

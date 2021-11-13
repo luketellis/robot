@@ -2,6 +2,10 @@ const MAX_ROBOTS = 5;
 const NUM_ROWS = 5;
 const NUM_COLUMNS = 5;
 
+const INFO_MESSAGES = {
+	ACTIVE_ROBOT_CHANGED: 'The active robot is now robot ',
+};
+
 const ERROR_MESSAGES = {
 	GRID_CELL_OCCUPIED: 'The proposed grid cell is already occupied',
 	INCORRECT_ARGUMENT: 'The argument passed in appears to be incorrect',
@@ -17,4 +21,4 @@ const ERROR_MESSAGES = {
 		'Instruction would result in the robot being outside of the grid',
 };
 
-export { ERROR_MESSAGES, MAX_ROBOTS, NUM_COLUMNS, NUM_ROWS };
+export { ERROR_MESSAGES, INFO_MESSAGES, MAX_ROBOTS, NUM_COLUMNS, NUM_ROWS };
