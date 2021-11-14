@@ -2,7 +2,7 @@ import { DirectionEnum } from './Direction';
 import { ERROR_MESSAGES } from '../config/constants';
 import { Robot } from './Robot';
 import Coordinate from './Coordinate';
-import { validateValidCoordinate } from './Grid';
+import { isGridCellFull, isValidCoordinate } from './Grid';
 
 const InstructionEnum = Object.freeze({
 	PLACE: 1,
@@ -13,7 +13,7 @@ const InstructionEnum = Object.freeze({
 });
 
 //PLACE 1,2,NORTH
-const isValidInstruction = (instruction) => {
+const isValidInstruction = (instruction, robotArray) => {
 	if (!instruction || typeof instruction !== 'string') {
 		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
 	}
@@ -31,14 +31,14 @@ const isValidInstruction = (instruction) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (!isValidPlaceCommand(instructionArray[1])) {
+	if (!isValidPlaceCommand(instructionArray[1], robotArray)) {
 		return false;
 	}
 
 	return true;
 };
 
-const isValidPlaceCommand = (place) => {
+const isValidPlaceCommand = (place, robotArray) => {
 	const placeArray = place.split(',');
 
 	if (placeArray.length !== 3) {
@@ -49,8 +49,14 @@ const isValidPlaceCommand = (place) => {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (!validateValidCoordinate(new Coordinate(placeArray[0], placeArray[1]))) {
+	const potentialCoordinate = new Coordinate(placeArray[0], placeArray[1]);
+
+	if (!isValidCoordinate(potentialCoordinate)) {
 		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
+	}
+
+	if (isGridCellFull(robotArray, potentialCoordinate)) {
+		throw new Error(ERROR_MESSAGES.GRID_CELL_OCCUPIED);
 	}
 
 	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {

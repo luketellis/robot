@@ -1,5 +1,5 @@
 import { DirectionEnum } from './Direction';
-import { validateValidCoordinate } from './Grid';
+import { isGridCellFull, isValidCoordinate } from './Grid';
 import { ERROR_MESSAGES } from '../config/constants';
 
 function Robot(id, coordinate, direction, active) {
@@ -9,7 +9,7 @@ function Robot(id, coordinate, direction, active) {
 	this.active = active;
 }
 
-const moveRobotForward = (robot) => {
+const calculateRobotForwardPosition = (robot) => {
 	if (!robot) {
 		throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
 	}
@@ -36,11 +36,11 @@ const moveRobotForward = (robot) => {
 			throw new Error(ERROR_MESSAGES.INVALID_DIRECTION);
 	}
 
-	if (validateValidCoordinate(potentialPosition)) {
-		robot.coordinate = potentialPosition;
-	} else {
+	if (!isValidCoordinate(potentialPosition)) {
 		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
 	}
+
+	return potentialPosition;
 };
 
-export { moveRobotForward, Robot };
+export { calculateRobotForwardPosition, Robot };

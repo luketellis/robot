@@ -1,11 +1,17 @@
 import React from 'react';
 import './RobotMovementBar.css';
 import Button from '../Button/Button';
-import { moveRobotForward } from '../../domain/classes/Robot';
+import { calculateRobotForwardPosition } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
 import { ERROR_MESSAGES } from '../../domain/config/constants';
+import { isGridCellFull } from '../../domain/classes/Grid';
 
-function RobotMovementBar({ activeRobot, displayToast, updateActiveRobot }) {
+function RobotMovementBar({
+	activeRobot,
+	displayToast,
+	updateActiveRobot,
+	robotArray,
+}) {
 	const validateActiveRobotExists = () => {
 		if (!activeRobot) {
 			throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
@@ -16,7 +22,14 @@ function RobotMovementBar({ activeRobot, displayToast, updateActiveRobot }) {
 	const moveRobot = () => {
 		try {
 			validateActiveRobotExists();
-			moveRobotForward(activeRobot);
+			const potentialRobotPosition = calculateRobotForwardPosition(activeRobot);
+
+			if (isGridCellFull(robotArray, potentialRobotPosition)) {
+				throw new Error(ERROR_MESSAGES.GRID_CELL_OCCUPIED);
+			}
+
+			activeRobot.coordinate = potentialRobotPosition;
+
 			updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
 		} catch (e) {
 			displayToast(e.message);

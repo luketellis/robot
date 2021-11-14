@@ -22,7 +22,7 @@ function App() {
 		let potentialRobot;
 		try {
 			isMaxRobotsExceeded(robotArray.length);
-			isValidInstruction(instruction);
+			isValidInstruction(instruction, robotArray);
 			potentialRobot = createRobotFromString(
 				instruction,
 				robotArray.length + 1,
@@ -118,6 +118,7 @@ function App() {
 					activeRobot={activeRobot}
 					displayToast={displayToast}
 					updateActiveRobot={updateActiveRobot}
+					robotArray={robotArray}
 				/>
 				<Grid robotArray={robotArray} setActive={updateActiveRobot} />
 			</header>

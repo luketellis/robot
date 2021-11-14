@@ -13,7 +13,7 @@ function Grid() {
 
 var grid = new Grid();
 
-const validateValidCoordinate = (coordinate) => {
+const isValidCoordinate = (coordinate) => {
 	if (coordinate.x < 0 || coordinate.y < 0) {
 		return false;
 	}
@@ -32,4 +32,14 @@ const isMaxRobotsExceeded = (currentRobotNumber) => {
 	return true;
 };
 
-export { grid, isMaxRobotsExceeded, validateValidCoordinate };
+const isGridCellFull = (robotArray, coordinate) => {
+	const matchingRobots = robotArray.filter((robot) => {
+		return (
+			robot.coordinate.x == coordinate.x && robot.coordinate.y == coordinate.y
+		);
+	});
+
+	return matchingRobots.length;
+};
+
+export { grid, isGridCellFull, isMaxRobotsExceeded, isValidCoordinate };
