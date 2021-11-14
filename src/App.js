@@ -91,11 +91,14 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
+				<div>
+					<Toaster
+						toastOptions={{
+							duration: 2000,
+						}}
+					/>
+				</div>
 				<h1>Robot</h1>
-				<Table
-					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
-					tableData={robotArray}
-				/>
 				<TextInput
 					helperText=""
 					placeholder="Enter Starting Instructions"
@@ -106,13 +109,14 @@ function App() {
 					onClick={addRobot}
 					disabled={!instruction}
 				/>
-				<div>
-					<Toaster
-						toastOptions={{
-							duration: 2000,
-						}}
-					/>
-				</div>
+
+				<br />
+
+				<Table
+					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
+					tableData={robotArray}
+					setActive={updateActiveRobot}
+				/>
 
 				<RobotMovementBar
 					activeRobot={activeRobot}

@@ -2,8 +2,9 @@ import React from 'react';
 import TableData from '../TableData/TableData';
 import './Table.css';
 import { TiTick } from 'react-icons/ti';
+import { FiSquare } from 'react-icons/fi';
 
-function Table({ tableData = [], tableHeadings = [] }) {
+function Table({ tableData = [], tableHeadings = [], setActive }) {
 	const headerRowElements = tableHeadings.map((tableHeading, index) => (
 		<TableData key={index} data={tableHeading} headerRowType={true}></TableData>
 	));
@@ -27,7 +28,15 @@ function Table({ tableData = [], tableHeadings = [] }) {
 			></TableData>
 			<TableData
 				key={`${tableDataItem.id}-active`}
-				data={tableDataItem.active && <TiTick />}
+				data={
+					tableDataItem.active ? (
+						<TiTick />
+					) : (
+						<FiSquare
+							onClick={() => setActive(tableDataItem.id, 'active', true)}
+						/>
+					)
+				}
 				headerRowType={false}
 			></TableData>
 		</tr>
