@@ -14,9 +14,9 @@ export default function GridCell({ coordinateText, robot, setActive }) {
 			{robot && (
 				<FaRobot
 					onClick={() => setActive(robot.id, 'active', true)}
-					className={`${turnDirectionIntoLowerCase(robot.direction)} robot${
-						robot.id
-					}`}
+					className={`${turnDirectionIntoLowerCase(
+						robot.direction
+					)} robot robot${robot.id}`}
 				/>
 			)}
 		</span>

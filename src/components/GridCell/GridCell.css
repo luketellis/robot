@@ -1,12 +1,21 @@
 .gridcell {
-	min-width: 10vh;
-	min-height: 10vh;
+	min-width: 9vh;
+	min-height: 9vh;
 	border-style: solid;
 	border-color: red;
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
 }
+
+/* .robot {
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
+}
+
+.north {
+	transform: rotateZ(0deg);
+} */
 
 .east {
 	transform: rotateZ(90deg);
@@ -17,5 +26,5 @@
 }
 
 .west {
-	transform: rotateZ(-90deg);
+	transform: rotateZ(270deg);
 }

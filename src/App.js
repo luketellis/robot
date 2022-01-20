@@ -30,6 +30,7 @@ function App() {
 			);
 
 			setRobotArray((prevState) => [...prevState, potentialRobot]);
+			setInstruction('');
 		} catch (e) {
 			displayToast(e.message);
 			return;
@@ -40,13 +41,13 @@ function App() {
 
 	const updateActiveRobot = (id, property, value) => {
 		try {
-			let oldRobotArray = [...robotArray];
+			const oldRobotArray = [...robotArray];
 
-			var matchingRobotArray = oldRobotArray.filter((robot) => {
+			const matchingRobotArray = oldRobotArray.filter((robot) => {
 				return robot.id === id;
 			});
 
-			var nonMatchingRobotArray = oldRobotArray.filter((robot) => {
+			const nonMatchingRobotArray = oldRobotArray.filter((robot) => {
 				return robot.id !== id;
 			});
 
@@ -56,7 +57,7 @@ function App() {
 				});
 			}
 
-			var matchingRobot = { ...matchingRobotArray[0] };
+			const matchingRobot = { ...matchingRobotArray[0] };
 			matchingRobot[property] = value;
 
 			const robotArrayWithUpdatedValues = [
@@ -78,8 +79,8 @@ function App() {
 		}
 	};
 
-	const handleSearchTerm = (e) => {
-		setInstruction(e.target.value.trim());
+	const handleInstructionTerm = (e) => {
+		setInstruction(e.target.value);
 	};
 
 	const displayToast = (message, icon = '⚠️') => {
@@ -99,23 +100,23 @@ function App() {
 					/>
 				</div>
 				<h1>Robot</h1>
-				<TextInput
-					helperText=""
-					placeholder="Enter Starting Instructions"
-					onChange={handleSearchTerm}
-				/>
-				<Button
-					label="Create New Robot"
-					onClick={addRobot}
-					disabled={!instruction}
-				/>
-
-				<br />
 
 				<Table
 					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
 					tableData={robotArray}
 					setActive={updateActiveRobot}
+				/>
+
+				<TextInput
+					helperText=""
+					placeholder="Enter Starting Instructions"
+					onChange={handleInstructionTerm}
+					value={instruction}
+				/>
+				<Button
+					label="Create New Robot"
+					onClick={addRobot}
+					disabled={!instruction}
 				/>
 
 				<RobotMovementBar
