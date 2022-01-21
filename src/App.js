@@ -90,42 +90,40 @@ function App() {
 	};
 
 	return (
-		<div className="App">
-			<header className="App-header">
-				<div>
-					<Toaster
-						toastOptions={{
-							duration: 2000,
-						}}
-					/>
-				</div>
-				<h1>Robot</h1>
+		<div className="app">
+			<div>
+				<Toaster
+					toastOptions={{
+						duration: 2000,
+					}}
+				/>
+			</div>
+			<h1>Robot</h1>
 
-				<Table
-					tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
-					tableData={robotArray}
-					setActive={updateActiveRobot}
-				/>
+			<Table
+				tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
+				tableData={robotArray}
+				setActive={updateActiveRobot}
+			/>
 
-				<TextInput
-					placeholder="Enter Starting Instructions"
-					onChange={handleInstructionTerm}
-					value={instruction}
-				/>
-				<Button
-					label="Create New Robot"
-					onClick={addRobot}
-					disabled={!instruction}
-				/>
+			<TextInput
+				placeholder="Enter Starting Instructions"
+				onChange={handleInstructionTerm}
+				value={instruction}
+			/>
+			<Button
+				label="Create New Robot"
+				onClick={addRobot}
+				disabled={!instruction}
+			/>
 
-				<RobotMovementBar
-					activeRobot={activeRobot}
-					displayToast={displayToast}
-					updateActiveRobot={updateActiveRobot}
-					robotArray={robotArray}
-				/>
-				<Grid robotArray={robotArray} setActive={updateActiveRobot} />
-			</header>
+			<RobotMovementBar
+				activeRobot={activeRobot}
+				displayToast={displayToast}
+				updateActiveRobot={updateActiveRobot}
+				robotArray={robotArray}
+			/>
+			<Grid robotArray={robotArray} setActive={updateActiveRobot} />
 		</div>
 	);
 }
