@@ -1,5 +1,5 @@
 import { DirectionEnum } from './Direction';
-import { isGridCellFull, isValidCoordinate } from './Grid';
+import { isValidCoordinate } from './Grid';
 import { ERROR_MESSAGES } from '../config/constants';
 
 function Robot(id, coordinate, direction, active) {

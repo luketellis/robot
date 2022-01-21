@@ -108,7 +108,6 @@ function App() {
 				/>
 
 				<TextInput
-					helperText=""
 					placeholder="Enter Starting Instructions"
 					onChange={handleInstructionTerm}
 					value={instruction}

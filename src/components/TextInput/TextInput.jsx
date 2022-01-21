@@ -1,16 +1,9 @@
 import React from 'react';
 
-function TextInput({ helperText, ...props }) {
+function TextInput({ ...props }) {
 	return (
-		<span>
-			<span className="">
-				<input {...props} />
-			</span>
-			{helperText && (
-				<div>
-					<span>{helperText}</span>
-				</div>
-			)}
+		<span className="">
+			<input {...props} />
 		</span>
 	);
 }
