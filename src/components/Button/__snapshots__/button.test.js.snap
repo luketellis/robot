@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders button correctly 1`] = `
+<DocumentFragment>
+  <button
+    class=""
+  >
+    I am a button
+  </button>
+</DocumentFragment>
+`;
