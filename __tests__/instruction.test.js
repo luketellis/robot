@@ -1,5 +1,9 @@
 import { isValidInstruction } from '../src/domain/classes/Instruction';
-import { ERROR_MESSAGES } from '../src/domain/config/constants';
+import {
+	ERROR_MESSAGES,
+	NUM_COLUMNS,
+	NUM_ROWS,
+} from '../src/domain/config/constants';
 
 describe('Wrong instruction arugments - non strings', () => {
 	it.each(['', undefined, null, [], {}, 0, 1])(
@@ -16,10 +20,11 @@ describe('Wrong instruction arugments - non strings', () => {
 
 describe('Correct instruction arguments', () => {
 	it.each([
-		'PLACE 4,4,NORTH',
+		`PLACE ${NUM_ROWS - 1},${NUM_COLUMNS - 1},NORTH`,
 		'PLACE 0,0,SOUTH',
-		'PLACE 4,0,EAST',
+		`PLACE ${NUM_ROWS - 1},0,EAST`,
 		'PLACE 0,4,WEST',
+		'PLACE 0,4,west',
 	])(
 		`should return proper result when passed argument instruction argument: %s`,
 		(instruction) => {
@@ -49,8 +54,8 @@ describe('Incorrect instruction arguments - outside of grid', () => {
 	it.each([
 		'PLACE -1,2,NORTH',
 		'PLACE 1,-1,NORTH',
-		'PLACE 5,2,WEST',
-		'PLACE 1,5,WEST',
+		`PLACE ${NUM_COLUMNS},2,WEST`,
+		`PLACE 1,${NUM_ROWS},WEST`,
 	])(
 		`should throw error when passed coordinates outside of gird: %s`,
 		(instruction) => {

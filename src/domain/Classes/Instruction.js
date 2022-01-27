@@ -75,7 +75,7 @@ const createRobotFromString = (instruction, id, active) => {
 	return new Robot(
 		id,
 		new Coordinate(parseInt(placeArray[0]), parseInt(placeArray[1])),
-		placeArray[2],
+		placeArray[2].toUpperCase(),
 		active
 	);
 };
