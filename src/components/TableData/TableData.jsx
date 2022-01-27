@@ -1,5 +1,4 @@
 import React from 'react';
-import './TableData.css';
 
 function TableData({ headerRowType = 'false', data }) {
 	return (

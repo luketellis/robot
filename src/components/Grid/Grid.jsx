@@ -1,5 +1,4 @@
 import React from 'react';
-import './Grid.css';
 import Row from '../Row/Row';
 import { grid } from '../../domain/classes/Grid';
 
