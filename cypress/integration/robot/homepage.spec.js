@@ -4,7 +4,7 @@ const expectedTitle = 'Robot';
 
 describe('robot page', () => {
 	beforeEach(() => {
-		cy.visit(Cypress.config().baseUrl);
+		cy.visit('');
 	});
 
 	it('displays Robot heading', () => {
