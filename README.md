@@ -2,15 +2,28 @@
 
 ## Available Scripts
 
-In the project directory, you can run:
+Project is currently hosted on
+
+### `https://luketellis.github.io/robot/`
+
+In the project root directory, you can run:
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Cypress tests can be run with:
+
+### `npm run cypress`
+
+Jest tests can be run with:
+
+### `npm run test`
+
+## Example Run
+
+![](https://github.com/luketellis/robot/RobotDemo.gif)
 
 ## Challenge Statement
 
