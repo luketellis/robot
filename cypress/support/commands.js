@@ -1,13 +1,12 @@
 Cypress.Commands.add('createRobot', (placeCommand) => {
 	cy.get("[placeholder='Enter Starting Instructions']").type(placeCommand);
-
-	cy.contains('Create New Robot').click();
+	cy.contains(/Create New Robot/i).click();
 });
 
 Cypress.Commands.add('turnRobotLeft', () => {
-	cy.contains('Turn Robot Left').click();
+	cy.contains(/Turn Robot Left/i).click();
 });
 
 Cypress.Commands.add('turnRobotRight', () => {
-	cy.contains('Turn Robot Right').click();
+	cy.contains(/Turn Robot Right/i).click();
 });
