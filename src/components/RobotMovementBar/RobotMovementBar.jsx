@@ -1,17 +1,17 @@
 import React from 'react';
 import './RobotMovementBar.css';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 import { calculateRobotForwardPosition } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
 import { ERROR_MESSAGES } from '../../domain/config/constants';
 import { isGridCellFull } from '../../domain/classes/Grid';
 
-function RobotMovementBar({
+export const RobotMovementBar = ({
 	activeRobot,
 	displayToast,
 	updateActiveRobot,
 	robotArray,
-}) {
+}) => {
 	const validateActiveRobotExists = () => {
 		if (!activeRobot) {
 			throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
@@ -64,6 +64,4 @@ function RobotMovementBar({
 			<Button label="Turn Robot Right" onClick={turnRobotRight} />
 		</div>
 	);
-}
-
-export default RobotMovementBar;
+};

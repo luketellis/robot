@@ -1,10 +1,10 @@
 import './App.css';
 import React, { useState } from 'react';
-import Button from './components/Button/Button';
-import Grid from './components/Grid/Grid';
-import Table from './components/Table/Table';
-import TextInput from './components/TextInput/TextInput';
-import RobotMovementBar from './components/RobotMovementBar/RobotMovementBar';
+import { Button } from './components/Button/Button';
+import { Grid } from './components/Grid/Grid';
+import { Table } from './components/Table/Table';
+import { TextInput } from './components/TextInput/TextInput';
+import { RobotMovementBar } from './components/RobotMovementBar/RobotMovementBar';
 import {
 	isValidInstruction,
 	createRobotFromString,

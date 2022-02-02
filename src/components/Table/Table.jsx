@@ -1,10 +1,10 @@
 import React from 'react';
-import TableData from '../TableData/TableData';
 import './Table.css';
+import { TableData } from '../TableData/TableData';
 import { TiTick } from 'react-icons/ti';
 import { FiSquare } from 'react-icons/fi';
 
-function Table({ tableData = [], tableHeadings = [], setActive }) {
+export const Table = ({ tableData = [], tableHeadings = [], setActive }) => {
 	const headerRowElements = tableHeadings.map((tableHeading, index) => (
 		<TableData key={index} data={tableHeading} headerRowType={true}></TableData>
 	));
@@ -51,6 +51,4 @@ function Table({ tableData = [], tableHeadings = [], setActive }) {
 			<tbody className="table">{dataRowElements}</tbody>
 		</table>
 	);
-}
-
-export default Table;
+};

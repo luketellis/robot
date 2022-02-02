@@ -1,9 +1,9 @@
 import React from 'react';
 import './Row.css';
-import GridCell from '../GridCell/GridCell';
+import { GridCell } from '../GridCell/GridCell';
 import { grid } from '../../domain/classes/Grid';
 
-export default function Row({ robotArray = [], rowNumber, setActive }) {
+export const Row = ({ robotArray = [], rowNumber, setActive }) => {
 	var cellsArray = [];
 
 	const doesGridCellAlreadyHaveRobot = (row, column) => {
@@ -28,4 +28,4 @@ export default function Row({ robotArray = [], rowNumber, setActive }) {
 	}
 
 	return <div className="row">{cellsArray}</div>;
-}
+};

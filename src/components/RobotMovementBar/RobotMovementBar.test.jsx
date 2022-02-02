@@ -1,7 +1,7 @@
-import RobotMovementBar from './RobotMovementBar';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { RobotMovementBar } from './RobotMovementBar';
 
 describe('Component test: RobotMovementBar', () => {
 	it('Should render component', () => {

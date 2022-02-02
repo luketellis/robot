@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TableData({ headerRowType = 'false', data }) {
+export const TableData = ({ headerRowType = 'false', data }) => {
 	return (
 		<React.Fragment>
 			{headerRowType ? (
@@ -10,6 +10,4 @@ function TableData({ headerRowType = 'false', data }) {
 			)}
 		</React.Fragment>
 	);
-}
-
-export default TableData;
+};

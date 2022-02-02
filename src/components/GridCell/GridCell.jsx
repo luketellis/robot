@@ -2,7 +2,7 @@ import React from 'react';
 import './GridCell.css';
 import { FaRobot } from 'react-icons/fa';
 
-export default function GridCell({ coordinateText, robot, setActive }) {
+export const GridCell = ({ coordinateText, robot, setActive }) => {
 	const turnDirectionIntoLowerCase = (direction) => {
 		return direction.toLowerCase();
 	};
@@ -20,4 +20,4 @@ export default function GridCell({ coordinateText, robot, setActive }) {
 			)}
 		</span>
 	);
-}
+};
