@@ -23,7 +23,7 @@ Jest tests can be run with:
 
 ## Example Run
 
-![](https://github.com/luketellis/robot/RobotDemo.gif)
+![](RobotDemo.gif)
 
 ## Challenge Statement
 
