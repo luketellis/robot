@@ -14,22 +14,22 @@ import { toast, Toaster } from 'react-hot-toast';
 import { INFO_MESSAGES } from './domain/config/constants';
 
 function App() {
-	const [robotArray, setRobotArray] = useState([]);
+	const [robots, setRobots] = useState([]);
 	const [instruction, setInstruction] = useState('');
 	const [activeRobot, setActiveRobot] = useState('');
 
 	const addRobot = () => {
 		let potentialRobot;
 		try {
-			isMaxRobotsExceeded(robotArray.length);
-			isValidInstruction(instruction, robotArray);
+			isMaxRobotsExceeded(robots.length);
+			isValidInstruction(instruction, robots);
 			potentialRobot = createRobotFromString(
 				instruction,
-				robotArray.length + 1,
+				robots.length + 1,
 				!activeRobot
 			);
 
-			setRobotArray((prevState) => [...prevState, potentialRobot]);
+			setRobots((prevState) => [...prevState, potentialRobot]);
 			setInstruction('');
 		} catch (e) {
 			displayToast(e.message);
@@ -41,7 +41,7 @@ function App() {
 
 	const updateActiveRobot = (id, property, value) => {
 		try {
-			const oldRobotArray = [...robotArray];
+			const oldRobotArray = [...robots];
 
 			const matchingRobotArray = oldRobotArray.filter((robot) => {
 				return robot.id === id;
@@ -67,7 +67,7 @@ function App() {
 
 			robotArrayWithUpdatedValues.sort((a, b) => a.id - b.id);
 
-			setRobotArray(robotArrayWithUpdatedValues);
+			setRobots(robotArrayWithUpdatedValues);
 
 			if (property === 'active' && activeRobot.id !== id) {
 				displayToast(INFO_MESSAGES.ACTIVE_ROBOT_CHANGED + id, '✔️');
@@ -102,7 +102,7 @@ function App() {
 
 			<Table
 				tableHeadings={['ID', 'Coordinate', 'Direction', 'Active']}
-				tableData={robotArray}
+				tableData={robots}
 				setActive={updateActiveRobot}
 			/>
 
@@ -121,9 +121,9 @@ function App() {
 				activeRobot={activeRobot}
 				displayToast={displayToast}
 				updateActiveRobot={updateActiveRobot}
-				robotArray={robotArray}
+				robotArray={robots}
 			/>
-			<Grid robotArray={robotArray} setActive={updateActiveRobot} />
+			<Grid robots={robots} setActive={updateActiveRobot} />
 		</div>
 	);
 }
