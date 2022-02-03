@@ -2,7 +2,7 @@ import React from 'react';
 
 export const TextInput = ({ ...props }) => {
 	return (
-		<span className="">
+		<span>
 			<input {...props} />
 		</span>
 	);

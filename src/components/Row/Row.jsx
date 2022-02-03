@@ -1,7 +1,7 @@
 import React from 'react';
 import './Row.css';
 import { GridCell } from '../GridCell/GridCell';
-import { NUM_COLUMNS, NUM_ROWS } from '../../domain/config/constants';
+import { NUM_COLUMNS } from '../../domain/config/constants';
 
 export const Row = ({ robots = [], rowNumber, setActive }) => {
 	const doesGridCellAlreadyHaveRobot = (row, column) => {

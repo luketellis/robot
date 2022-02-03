@@ -1,7 +1,7 @@
 import { DirectionEnum } from './Direction';
 import { ERROR_MESSAGES } from '../config/constants';
 import { Robot } from './Robot';
-import Coordinate from './Coordinate';
+import { Coordinate } from './Coordinate';
 import { isGridCellFull, isValidCoordinate } from './Grid';
 
 //Validates commands to be valid, PLACE 1,2,NORTH
