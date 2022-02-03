@@ -19,24 +19,21 @@ function App() {
 	const [activeRobot, setActiveRobot] = useState('');
 
 	const addRobot = () => {
-		let potentialRobot;
 		try {
 			isMaxRobotsExceeded(robots.length);
 			isValidInstruction(instruction, robots);
-			potentialRobot = createRobotFromString(
+			const potentialRobot = createRobotFromString({
 				instruction,
-				robots.length + 1,
-				!activeRobot
-			);
-
+				id: robots.length + 1,
+				active: !activeRobot,
+			});
 			setRobots((prevState) => [...prevState, potentialRobot]);
 			setInstruction('');
+			!activeRobot && setActiveRobot(potentialRobot);
 		} catch (e) {
 			displayToast(e.message);
 			return;
 		}
-
-		!activeRobot && setActiveRobot(potentialRobot);
 	};
 
 	const updateActiveRobot = (id, property, value) => {

@@ -58,9 +58,8 @@ export const isValidPlaceCommand = (place, robotArray) => {
 	return true;
 };
 
-export const createRobotFromString = (instruction, id, active) => {
+export const createRobotFromString = ({ instruction, id, active }) => {
 	const instructionArray = instruction.split(' ');
-	instruction.split(' ');
 
 	const placeArray = instructionArray[1].split(',');
 
