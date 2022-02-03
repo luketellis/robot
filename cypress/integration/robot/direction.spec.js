@@ -1,14 +1,15 @@
 /// <reference types="cypress" />
 
-describe('robots should be able to turn left from all directions', () => {
-	before(() => {
-		cy.fixture('validPlaceCommands').then((data) => {
-			cy.northPlaceCommand = data.north;
-			cy.southPlaceCommand = data.south;
-			cy.eastPlaceCommand = data.east;
-			cy.westPlaceCommand = data.west;
-		});
+before(() => {
+	cy.fixture('facingBorderPlaceCommands').then((data) => {
+		cy.northPlaceCommand = data.north;
+		cy.southPlaceCommand = data.south;
+		cy.eastPlaceCommand = data.east;
+		cy.westPlaceCommand = data.west;
 	});
+});
+
+describe('robots should be able to turn left from all directions', () => {
 	beforeEach(() => {
 		cy.visit('');
 	});

@@ -10,3 +10,7 @@ Cypress.Commands.add('turnRobotLeft', () => {
 Cypress.Commands.add('turnRobotRight', () => {
 	cy.contains(/Turn Robot Right/i).click();
 });
+
+Cypress.Commands.add('forward', () => {
+	cy.contains(/Move Robot Forward/i).click();
+});

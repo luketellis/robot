@@ -1,6 +1,6 @@
 {
-	"north": "PLACE 0,4,NORTH",
-	"east": "PLACE 4,4,EAST",
-	"south": "PLACE 4,0,SOUTH",
-	"west": "PLACE 0,0,WEST"
+	"north": "PLACE 1,2,NORTH",
+	"east": "PLACE 2,3,EAST",
+	"south": "PLACE 3,3,SOUTH",
+	"west": "PLACE 3,2,WEST"
 }
