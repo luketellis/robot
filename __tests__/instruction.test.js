@@ -28,11 +28,7 @@ describe('Correct instruction arguments', () => {
 	])(
 		`should return proper result when passed argument instruction argument: %s`,
 		(instruction) => {
-			try {
-				expect(isValidInstruction(instruction, [])).toBe(true);
-			} catch (e) {
-				throw new Error('These commands should be valid');
-			}
+			expect(isValidInstruction(instruction, [])).toBe(true);
 		}
 	);
 });

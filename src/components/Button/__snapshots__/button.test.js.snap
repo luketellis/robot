@@ -2,9 +2,7 @@
 
 exports[`renders button correctly 1`] = `
 <DocumentFragment>
-  <button
-    class=""
-  >
+  <button>
     I am a button
   </button>
 </DocumentFragment>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Grid } from './Grid';
-import Coordinate from '../../domain/classes/Coordinate';
+import { Coordinate } from '../../domain/classes/Coordinate';
 import { Robot } from '../../domain/classes/Robot';
 
 const robot1 = new Robot(1, new Coordinate(1, 2), 'NORTH');
