@@ -1,7 +1,12 @@
 import React from 'react';
 import './Row.css';
 import { GridCell } from '../GridCell/GridCell';
-import { grid } from '../../domain/classes/Grid';
+import {
+	isValidCoordinate,
+	isMaxRobotsExceeded,
+	isGridCellFull,
+} from '../../domain/classes/Grid';
+import { NUM_COLUMNS } from '../../domain/config/constants';
 
 export const Row = ({ robotArray = [], rowNumber, setActive }) => {
 	var cellsArray = [];
@@ -16,7 +21,7 @@ export const Row = ({ robotArray = [], rowNumber, setActive }) => {
 		return robotFound;
 	};
 
-	for (var columnNumber = 0; columnNumber < grid.num_columns; columnNumber++) {
+	for (var columnNumber = 0; columnNumber < NUM_COLUMNS; columnNumber++) {
 		cellsArray.push(
 			<GridCell
 				key={`${columnNumber}, ${rowNumber}`}

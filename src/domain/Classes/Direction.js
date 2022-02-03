@@ -1,11 +1,11 @@
-const DirectionEnum = Object.freeze({
+export const DirectionEnum = Object.freeze({
 	NORTH: 'NORTH',
 	EAST: 'EAST',
 	SOUTH: 'SOUTH',
 	WEST: 'WEST',
 });
 
-const turnLeft = (robot) => {
+export const turnLeft = (robot) => {
 	if (!robot) {
 		throw new Error('Current robot is not defined');
 	}
@@ -30,7 +30,7 @@ const turnLeft = (robot) => {
 	}
 };
 
-const turnRight = (robot) => {
+export const turnRight = (robot) => {
 	if (!robot) {
 		throw new Error('Current robot is not defined');
 	}
@@ -52,5 +52,3 @@ const turnRight = (robot) => {
 			throw new Error('Current direction is not defined');
 	}
 };
-
-export { DirectionEnum, turnRight, turnLeft };

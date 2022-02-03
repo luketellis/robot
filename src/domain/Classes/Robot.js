@@ -2,19 +2,19 @@ import { DirectionEnum } from './Direction';
 import { isValidCoordinate } from './Grid';
 import { ERROR_MESSAGES } from '../config/constants';
 
-function Robot(id, coordinate, direction, active) {
+export function Robot(id, coordinate, direction, active) {
 	this.id = id;
 	this.coordinate = coordinate;
 	this.direction = direction;
 	this.active = active;
 }
 
-const calculateRobotForwardPosition = (robot) => {
+export const calculateRobotForwardPosition = (robot) => {
 	if (!robot) {
 		throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
 	}
 	if (!robot.direction) {
-		throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
+		throw new Error(ERROR_MESSAGES.ROBOT_MISSING_DIRECTION);
 	}
 
 	let potentialPosition = { ...robot.coordinate };
@@ -42,5 +42,3 @@ const calculateRobotForwardPosition = (robot) => {
 
 	return potentialPosition;
 };
-
-export { calculateRobotForwardPosition, Robot };

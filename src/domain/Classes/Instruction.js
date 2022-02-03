@@ -4,16 +4,8 @@ import { Robot } from './Robot';
 import Coordinate from './Coordinate';
 import { isGridCellFull, isValidCoordinate } from './Grid';
 
-const InstructionEnum = Object.freeze({
-	PLACE: 1,
-	MOVE: 2,
-	LEFT: 3,
-	RIGHT: 4,
-	REPORT: 5,
-});
-
-//PLACE 1,2,NORTH
-const isValidInstruction = (instruction, robotArray) => {
+//Validates commands to be valid, PLACE 1,2,NORTH
+export const isValidInstruction = (instruction, robotArray) => {
 	if (!instruction || typeof instruction !== 'string') {
 		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
 	}
@@ -38,7 +30,7 @@ const isValidInstruction = (instruction, robotArray) => {
 	return true;
 };
 
-const isValidPlaceCommand = (place, robotArray) => {
+export const isValidPlaceCommand = (place, robotArray) => {
 	const placeArray = place.split(',');
 
 	if (placeArray.length !== 3) {
@@ -66,7 +58,7 @@ const isValidPlaceCommand = (place, robotArray) => {
 	return true;
 };
 
-const createRobotFromString = (instruction, id, active) => {
+export const createRobotFromString = (instruction, id, active) => {
 	const instructionArray = instruction.split(' ');
 	instruction.split(' ');
 
@@ -79,5 +71,3 @@ const createRobotFromString = (instruction, id, active) => {
 		active
 	);
 };
-
-export { InstructionEnum, isValidInstruction, createRobotFromString };
