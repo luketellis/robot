@@ -6,6 +6,10 @@ import {
 } from '../config/constants';
 
 export const isValidCoordinate = ({ x, y }) => {
+	if (isNaN(x) || isNaN(y)) {
+		return false;
+	}
+
 	if (x < 0 || y < 0) {
 		return false;
 	}
@@ -16,12 +20,15 @@ export const isValidCoordinate = ({ x, y }) => {
 	return true;
 };
 
-export const isMaxRobotsExceeded = (currentRobotNumber) => {
-	if (currentRobotNumber >= MAX_ROBOTS) {
+export const isMaxRobotsExceeded = (
+	currentRobotNumber,
+	maxRobots = MAX_ROBOTS
+) => {
+	if (currentRobotNumber >= maxRobots) {
 		throw new Error(ERROR_MESSAGES.MAX_ROBOTS_EXCEEDED);
 	}
 
-	return true;
+	return false;
 };
 
 export const isGridCellFull = (robots = [], { x, y }) => {
@@ -30,8 +37,8 @@ export const isGridCellFull = (robots = [], { x, y }) => {
 	}
 
 	const matchingRobots = robots.filter((robot) => {
-		return robot.coordinate.x == x && robot.coordinate.y == y;
+		return robot.coordinate.x === Number(x) && robot.coordinate.y === Number(y);
 	});
 
-	return matchingRobots.length;
+	return matchingRobots.length > 0;
 };

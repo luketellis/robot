@@ -1,10 +1,9 @@
 import { DirectionEnum } from './Direction';
 import { ERROR_MESSAGES } from '../config/constants';
 import { Robot } from './Robot';
-import { Coordinate } from './Coordinate';
 import { isGridCellFull, isValidCoordinate } from './Grid';
 
-//Validates commands to be valid, PLACE 1,2,NORTH
+//Validates commands to be of valid format, "PLACE 1,2,NORTH"
 export const isValidInstruction = (instruction, robotArray) => {
 	if (!instruction || typeof instruction !== 'string') {
 		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
@@ -30,18 +29,31 @@ export const isValidInstruction = (instruction, robotArray) => {
 	return true;
 };
 
-export const isValidPlaceCommand = (place, robotArray) => {
+export const getCoordinateAndDirection = (place) => {
 	const placeArray = place.split(',');
 
 	if (placeArray.length !== 3) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	if (placeArray[0].isNan || placeArray[1].isNan) {
+	const x = parseInt(placeArray[0]);
+	const y = parseInt(placeArray[1]);
+	const direction = placeArray[2].toUpperCase();
+
+	if (isNaN(x) || isNaN(y)) {
 		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
 	}
 
-	const potentialCoordinate = new Coordinate(placeArray[0], placeArray[1]);
+	if (!(direction in DirectionEnum)) {
+		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
+	}
+
+	const coord = { x, y };
+	return [coord, direction];
+};
+
+export const isValidPlaceCommand = (place, robotArray) => {
+	const [potentialCoordinate] = getCoordinateAndDirection(place);
 
 	if (!isValidCoordinate(potentialCoordinate)) {
 		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
@@ -51,22 +63,12 @@ export const isValidPlaceCommand = (place, robotArray) => {
 		throw new Error(ERROR_MESSAGES.GRID_CELL_OCCUPIED);
 	}
 
-	if (!(placeArray[2].toUpperCase() in DirectionEnum)) {
-		throw new Error(ERROR_MESSAGES.INVALID_PLACE_COMMAND);
-	}
-
 	return true;
 };
 
 export const createRobotFromString = ({ instruction, id, active }) => {
-	const instructionArray = instruction.split(' ');
+	const [, place] = instruction.split(' ');
+	const [coordinate, direction] = getCoordinateAndDirection(place);
 
-	const placeArray = instructionArray[1].split(',');
-
-	return new Robot(
-		id,
-		new Coordinate(parseInt(placeArray[0]), parseInt(placeArray[1])),
-		placeArray[2].toUpperCase(),
-		active
-	);
+	return new Robot(id, coordinate, direction, active);
 };
