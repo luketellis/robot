@@ -1,5 +1,4 @@
 import React from 'react';
-import './RobotMovementBar.css';
 import { Button } from '../Button/Button';
 import { calculateRobotForwardPosition } from '../../domain/classes/Robot';
 import { turnLeft, turnRight } from '../../domain/classes/Direction';
@@ -12,23 +11,19 @@ export const RobotMovementBar = ({
 	updateActiveRobot,
 	robotArray,
 }) => {
-	const validateActiveRobotExists = () => {
-		if (!activeRobot) {
-			throw new Error(ERROR_MESSAGES.NO_ACTIVE_ROBOT);
-		}
-		return true;
-	};
+	if (!activeRobot) {
+		return null;
+	}
 
 	const moveRobot = () => {
 		try {
-			validateActiveRobotExists();
 			const potentialRobotPosition = calculateRobotForwardPosition(activeRobot);
 
 			if (isGridCellFull(robotArray, potentialRobotPosition)) {
 				throw new Error(ERROR_MESSAGES.GRID_CELL_OCCUPIED);
 			}
 
-			activeRobot.coordinate = potentialRobotPosition;
+			activeRobot.coordinate = { ...potentialRobotPosition };
 
 			updateActiveRobot(activeRobot.id, 'coordinate', activeRobot.coordinate);
 		} catch (e) {
@@ -38,7 +33,6 @@ export const RobotMovementBar = ({
 
 	const turnRobotLeft = () => {
 		try {
-			validateActiveRobotExists();
 			turnLeft(activeRobot);
 			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 		} catch (e) {
@@ -48,7 +42,6 @@ export const RobotMovementBar = ({
 
 	const turnRobotRight = () => {
 		try {
-			validateActiveRobotExists();
 			turnRight(activeRobot);
 			updateActiveRobot(activeRobot.id, 'direction', activeRobot.direction);
 		} catch (e) {
@@ -57,7 +50,7 @@ export const RobotMovementBar = ({
 	};
 
 	return (
-		<div className="robotMovementBar">
+		<div>
 			<h2>Active Robot Commands</h2>
 			<Button label="Move Robot Forward" onClick={moveRobot} />
 			<Button label="Turn Robot Left" onClick={turnRobotLeft} />
