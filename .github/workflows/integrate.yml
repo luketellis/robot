@@ -17,3 +17,5 @@ jobs:
         with:
           build: npm run build
           start: npm start
+      - name: Running unit tests
+        run: npm run test
