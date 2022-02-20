@@ -5,4 +5,5 @@ module.exports = {
 	},
 	//Skip cypress tests when using Jest
 	testPathIgnorePatterns: ['<rootDir>/cypress/'],
+	modulePaths: ['<rootDir>'],
 };
