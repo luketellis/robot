@@ -5,7 +5,7 @@ import { RobotMovementBar } from './RobotMovementBar';
 
 describe('Component test: RobotMovementBar', () => {
 	it('Should render component', () => {
-		render(<RobotMovementBar />);
+		render(<RobotMovementBar activeRobot={true} />);
 		const forwardButton = screen.getByText('Move Robot Forward');
 		expect(forwardButton).toBeInTheDocument();
 	});

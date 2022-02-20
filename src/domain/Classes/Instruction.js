@@ -3,7 +3,7 @@ import { ERROR_MESSAGES } from '../config/constants';
 import { Robot } from './Robot';
 import { isGridCellFull, isValidCoordinate } from './Grid';
 
-//Validates commands to be of valid format, "PLACE 1,2,NORTH"
+//Validates commands to be of format, "PLACE 1,2,NORTH"
 export const isValidInstruction = (instruction, robotArray) => {
 	if (!instruction || typeof instruction !== 'string') {
 		throw new Error(ERROR_MESSAGES.INCORRECT_ARGUMENT);
@@ -54,7 +54,6 @@ export const getCoordinateAndDirection = (place) => {
 
 export const isValidPlaceCommand = (place, robotArray) => {
 	const [potentialCoordinate] = getCoordinateAndDirection(place);
-
 	if (!isValidCoordinate(potentialCoordinate)) {
 		throw new Error(ERROR_MESSAGES.OUTSIDE_OF_GRID);
 	}
