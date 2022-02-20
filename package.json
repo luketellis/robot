@@ -19,6 +19,7 @@
 		"build": "react-scripts build",
 		"test": "jest",
 		"cypress": "cypress open",
+		"cy:run": "cypress run --headless",
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
